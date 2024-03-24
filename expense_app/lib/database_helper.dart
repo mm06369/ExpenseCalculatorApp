@@ -70,6 +70,13 @@ class DatabaseHelper {
         {expenseName: expenseName_, amount: amnt, date: formattedDate()});
   }
 
+  static getTotalData() async {
+    Database db = await DatabaseHelper.instance.database;
+    var queryResult = await db.rawQuery(
+        "SELECT *  from $dbTable");
+    print(queryResult);
+  }
+
   getExpenses() async {
     print("Get expenses called");
     Database db = await DatabaseHelper.instance.database;
@@ -94,6 +101,7 @@ class DatabaseHelper {
     Database db = await DatabaseHelper.instance.database;
     var queryResult = await db.rawQuery(
         "SELECT sum(amount) FROM $dbTable where date = '${formattedDate()}'");
+    print(queryResult);
     if (queryResult.isNotEmpty) {
       var sumAmount =
           queryResult.first.values.first; // Get the sum from the first map
@@ -122,9 +130,17 @@ class DatabaseHelper {
   Map monthMap = {'January': 1, 'Febuary': 2, 'March' : 3, 'April' : 4, 'May' : 5, 'June' : 6, 'July' : 7, 'August' : 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12};
 
   monthExpense(String month) async {
+    print("month expense function called");
     Database db = await DatabaseHelper.instance.database;
-    var queryResult = await db.rawQuery(
-        "SELECT sum(amount) FROM $dbTable where date LIKE '%/${monthMap[month]}/%'");
+    List<Map<String, Object?>> queryResult;
+    if (monthMap[month] < 10){
+      queryResult = await db.rawQuery(
+        "SELECT sum(amount) FROM $dbTable where date LIKE '%/0${monthMap[month]}/%'");
+    }
+    else{
+      queryResult = await db.rawQuery(
+          "SELECT sum(amount) FROM $dbTable where date LIKE '%/0${monthMap[month]}/%'");
+    }
     if (queryResult.isNotEmpty){
       var sumAmount =
           queryResult.first.values.first; 

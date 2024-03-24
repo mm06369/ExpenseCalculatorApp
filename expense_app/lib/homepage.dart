@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    DatabaseHelper.getTotalData();
     
   }
 
@@ -176,6 +177,9 @@ class _HomePageState extends State<HomePage> {
                 }
                 return Container();
              }))
+             else if (period == 'Year') ...[
+              Text("hello world"),
+             ]
           ]),
         ),
       ),
