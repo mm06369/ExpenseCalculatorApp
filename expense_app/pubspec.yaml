@@ -1,7 +1,7 @@
 name: expense_app
 description: Keep a daily track of your daily expenses.
 publish_to: 'none'
-version: 0.1.0
+version: 0.1.0+5
 
 environment:
   sdk: '>=3.0.2 <4.0.0'

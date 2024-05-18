@@ -104,15 +104,15 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: PeriodContainer(text: "Month", selected: period == "Month" ? true : false)),
-                  GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        period = "Year";
-                      });
-                    },
-                    child: PeriodContainer(text: "Year", selected: period == "Year" ? true : false)
+                  // GestureDetector(
+                  //   onTap: (){
+                  //     setState(() {
+                  //       period = "Year";
+                  //     });
+                  //   },
+                  //   child: PeriodContainer(text: "Year", selected: period == "Year" ? true : false)
                     
-                    ),
+                  //   ),
                 ],
               ),
             ),

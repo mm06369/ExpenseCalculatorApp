@@ -18,7 +18,7 @@ class MonthContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ShowExpenseData(month: month,)));
+        // Navigator.push(context, MaterialPageRoute(builder: (_) => ShowExpenseData(month: month,)));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10),
